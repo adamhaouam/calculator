@@ -6,6 +6,7 @@ let displayVal = "0";
 let newVal = "";
 let operating = 0;
 let operator = "";
+let resultVal = "";
 
 //buttons1.addEventListener("click", press(this.target));
  numPad.addEventListener("click", (e) => { 
@@ -73,6 +74,11 @@ function clear() {
 }
 
 function addNum(val) {
+    if (operating == 2) {
+        displayVal = "";
+        operating = 0;
+    }
+    
     if (operating == 0) {
         if (displayVal.length < 11) {
             if (displayVal == "0") {
@@ -97,6 +103,6 @@ function execute() {
         displayVal = String(Number(displayVal) + Number(newVal));
     }
     newVal = "";
-    operating = 0;
+    operating = 2;
     operator = "";
 }
