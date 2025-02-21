@@ -123,5 +123,15 @@ function execute() {
 }
 
 function broken() {
-    
+    displayVal = "YOU BROKE IT WTF";
+    const r = Math.floor(Math.random() * 255);
+    const g = Math.floor(Math.random() * 255);
+    const b = Math.floor(Math.random() * 255);
+    numPad.style.backgroundColor = `rgb(${[r,g,b].join(',')})`;
+    buttons.forEach(button => {
+        const r = Math.floor(Math.random() * 255);
+        const g = Math.floor(Math.random() * 255);
+        const b = Math.floor(Math.random() * 255);
+        button.style.backgroundColor = `rgb(${[r,g,b].join(',')})`;
+    })
 }
