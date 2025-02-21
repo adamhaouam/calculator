@@ -45,6 +45,7 @@ function press(target) {
     )  operate(val);
 
     else if (val == "=") execute();
+    else if (val == ".") decimal();
     
     if (operating == 1 && ( //Highlight selected operator
         val == "x" ||
@@ -134,4 +135,14 @@ function broken() {
         const b = Math.floor(Math.random() * 255);
         button.style.backgroundColor = `rgb(${[r,g,b].join(',')})`;
     })
+}
+
+function decimal() {
+    if (operating == 0) {
+        if (!displayVal.includes(".")) displayVal += ".";
+    }
+    else if (operating == 1) {
+        console.log("adfsdf");
+        if (!newVal.includes(".")) newVal += ".";
+    }
 }
