@@ -42,8 +42,10 @@ function clear() {
 }
 
 function addNum(val) {
-    if (displayVal == "0") {
-        displayVal = val;
-    }
-    else displayVal += val;
+    if (displayVal.length < 11) {
+        if (displayVal == "0") {
+            displayVal = val;
+        }
+        else displayVal += val;
+    }  
 }
