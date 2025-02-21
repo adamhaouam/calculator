@@ -43,9 +43,9 @@ function press(target) {
         val == "÷"
     )  operate(val);
 
- 
+    else if (val == "=") execute();
     
-    if (operating == 1 && (
+    if (operating == 1 && ( //Highlight selected operator
         val == "x" ||
         val == "-" ||
         val == "+" ||
@@ -57,7 +57,7 @@ function press(target) {
             target.style.backgroundColor = "red";
         }
 
-    if (operating == 1 && newVal != "") display.textContent = newVal;
+    if (operating == 1 && newVal != "") display.textContent = newVal; //Display correct variable
     else display.textContent = displayVal;
 }
 
@@ -90,8 +90,13 @@ function addNum(val) {
 function operate(val) {
     operating = 1;
     operator = val;
-    //target.style.backgroundColor = "red";
+}
 
-    // if (val == "x") console.log("Times!");
-    // if (val == "÷") console.log("Divide!");
+function execute() {
+    if (operator == "+") {
+        displayVal = String(Number(displayVal) + Number(newVal));
+    }
+    newVal = "";
+    operating = 0;
+    operator = "";
 }
