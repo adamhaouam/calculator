@@ -60,3 +60,7 @@ li {
 .dot {
 	background-color: teal;
 }
+
+li:hover{
+	opacity: 80%;
+}
