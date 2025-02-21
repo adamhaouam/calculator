@@ -1,0 +1,62 @@
+.calc {
+	background-color: beige;
+	width: 305px;
+	border: black 4px solid;
+	font-family: Monospace, Tahoma, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 3px;
+  padding: 0;
+  font-size: 25px;
+}
+
+li {
+	width: 70px;
+	height: 60px;
+	margin: 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background-color: orange;
+	margin: 2px;
+	border-radius: 10px;
+}
+
+#zero {
+	width: 144px;
+}
+
+.numDisplay {
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	flex-direction: column;
+	padding-right: 8px;
+	background-color: grey;
+	margin: 2px;
+	border: black 3px solid;
+	font-size: 42px;
+	
+}
+
+.num {
+	background-color: teal;
+}
+
+.dot {
+	background-color: teal;
+}
