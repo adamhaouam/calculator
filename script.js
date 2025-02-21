@@ -75,7 +75,7 @@ function clear() {
 
 function addNum(val) {
     if (operating == 2) {
-        displayVal = "";
+        clear();
         operating = 0;
     }
     
