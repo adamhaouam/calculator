@@ -55,7 +55,7 @@ function press(target) {
             buttons[7].style.backgroundColor = "orange";
             buttons[11].style.backgroundColor = "orange";
             buttons[15].style.backgroundColor = "orange";
-            target.style.backgroundColor = "red";
+            target.style.backgroundColor = "peru";
         }
 
     if (operating == 1 && newVal != "") display.textContent = newVal; //Display correct variable
@@ -66,6 +66,7 @@ function press(target) {
 function clear() {
     displayVal = "0";
     newVal = "";
+    operator = "";
     operating = 0;
     buttons[3].style.backgroundColor = "orange";
     buttons[7].style.backgroundColor = "orange";
@@ -105,4 +106,8 @@ function execute() {
     newVal = "";
     operating = 2;
     operator = "";
+    buttons[3].style.backgroundColor = "orange";
+    buttons[7].style.backgroundColor = "orange";
+    buttons[11].style.backgroundColor = "orange";
+    buttons[15].style.backgroundColor = "orange";
 }

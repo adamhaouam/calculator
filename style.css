@@ -1,7 +1,9 @@
 .calc {
-	background-color: beige;
+	background-color: maroon;
 	width: 305px;
 	border: black 4px solid;
+    border-radius: 5px;
+    padding: 4px;
 	font-family: Monospace, Tahoma, sans-serif;
 }
 
@@ -54,11 +56,11 @@ li {
 }
 
 .num {
-	background-color: teal;
+	background-color: rgb(70,100,250);
 }
 
 .dot {
-	background-color: teal;
+	background-color: rgb(70,100,250);
 }
 
 li:hover{
