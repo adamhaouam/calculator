@@ -103,6 +103,16 @@ function execute() {
     if (operator == "+") {
         displayVal = String(Number(displayVal) + Number(newVal));
     }
+    else if (operator == "-") {
+        displayVal = String(Number(displayVal) - Number(newVal));
+    }
+    else if (operator == "x") {
+        displayVal = String(Number(displayVal) * Number(newVal));
+    }
+    else if (operator == "÷") {
+        if (newVal == "0") broken();
+        else displayVal = String(Number(displayVal) / Number(newVal));
+    }
     newVal = "";
     operating = 2;
     operator = "";
@@ -110,4 +120,8 @@ function execute() {
     buttons[7].style.backgroundColor = "orange";
     buttons[11].style.backgroundColor = "orange";
     buttons[15].style.backgroundColor = "orange";
+}
+
+function broken() {
+    
 }
