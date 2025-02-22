@@ -126,13 +126,12 @@ function decimal() {
         if (!displayVal.includes(".")) displayVal += ".";
     }
     else if (operating == 1) {
-        console.log("adfsdf");
         if (!newVal.includes(".")) newVal += ".";
     }
 }
 
 function screenLimit() { //Ensures result fits on screen
-    if (displayVal.length > 11) {
+    if (displayVal.length > 11 && displayVal != "YOU BROKE IT WTF") {
         if (Number(displayVal > 999999999)) { //If too high a number to fit without scientific notation
             displayVal = "99999999999";
         }
