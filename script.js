@@ -57,6 +57,8 @@ function press(target) {
         displayVal = "-" + displayVal;
     }
 
+    screenLimit();    
+
     if (operating == 1 && newVal != "") display.textContent = newVal; //Display correct variable
     else display.textContent = displayVal;
 }
@@ -146,4 +148,27 @@ function decimal() {
         console.log("adfsdf");
         if (!newVal.includes(".")) newVal += ".";
     }
+}
+
+function screenLimit() { //Ensures result fits on screen
+    if (displayVal.length > 11) {
+        if (Number(displayVal > 999999999)) { //If too high a number to fit without scientific notation
+            displayVal = "99999999999";
+        }
+
+        else {
+
+            let splitDec = displayVal.split("");
+            let rounder = Number(splitDec[10]); //Number to be rounded up or down
+
+            if (Number(splitDec[11]) >= 5) { //Round up!
+                splitDec.splice(10, displayVal.length, rounder + 1);
+            }
+            else { //Round down!
+                splitDec.splice(10, displayVal.length, rounder);
+            }
+            
+            displayVal = splitDec.join("");            
+        }
+    } 
 }
