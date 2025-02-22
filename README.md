@@ -8,3 +8,4 @@ WIP:
 x/- feature yet to be implemented
 % feature yet to be implemented
 Backspace button
+Remove excess zero's if decimal is rounded to a zero
