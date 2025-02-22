@@ -13,6 +13,32 @@ let resultVal = "";
      press(e.target);
  });
 
+
+addEventListener("keypress", logKey);
+
+function logKey(key) {
+    const val = key.key;
+    if (val == "0" ||
+        val == "1" ||
+        val == "2" ||
+        val == "3" ||
+        val == "4" ||
+        val == "5" ||
+        val == "6" ||
+        val == "7" ||
+        val == "8" ||
+        val == "9"
+    ) addNum(val);
+
+    else if (val == "=") execute();
+    else if (val == ".") decimal();
+
+    updateScreen(val);
+
+
+ }
+
+
 function press(target) {
     
 
@@ -39,28 +65,15 @@ function press(target) {
     else if (val == "=") execute();
     else if (val == ".") decimal();
     
-    if (operating == 1 && ( //Highlight selected operator
-        val == "x" ||
+    
+    updateScreen(val);
+    
+    if (val == "x" ||
         val == "-" ||
         val == "+" ||
-        val == "÷")) {
-            buttons[3].style.backgroundColor = "orange";
-            buttons[7].style.backgroundColor = "orange";
-            buttons[11].style.backgroundColor = "orange";
-            buttons[15].style.backgroundColor = "orange";
-            target.style.backgroundColor = "peru";
-        }
+        val == "÷"
+    ) target.style.backgroundColor = "Peru";
 
-    if (val == "-" && displayVal == "0") {
-        console.log("we tryin to neg!");
-        operating = 0;
-        displayVal = "-" + displayVal;
-    }
-
-    screenLimit();    
-
-    if (operating == 1 && newVal != "") display.textContent = newVal; //Display correct variable
-    else display.textContent = displayVal;
 }
 
 
@@ -171,4 +184,29 @@ function screenLimit() { //Ensures result fits on screen
             displayVal = splitDec.join("");            
         }
     } 
+}
+
+
+function updateScreen(val) {
+    if (operating == 1 && ( //Highlight selected operator
+    val == "x" ||
+    val == "-" ||
+    val == "+" ||
+    val == "÷")) {
+        buttons[3].style.backgroundColor = "orange";
+        buttons[7].style.backgroundColor = "orange";
+        buttons[11].style.backgroundColor = "orange";
+        buttons[15].style.backgroundColor = "orange";
+        
+    }
+
+    if (val == "-" && displayVal == "0") {
+        operating = 0;
+        displayVal = "-" + displayVal;
+    }
+
+
+    screenLimit();  
+    if (operating == 1 && newVal != "") display.textContent = newVal; //Display correct variable
+    else display.textContent = displayVal;
 }
