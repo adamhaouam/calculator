@@ -8,18 +8,10 @@ let operating = 0;
 let operator = "";
 let resultVal = "";
 
-//buttons1.addEventListener("click", press(this.target));
+
  numPad.addEventListener("click", (e) => { 
      press(e.target);
  });
-
-
-// buttons.forEach((button) => {
-//     button.addEventListener("click", (e) => { 
-//         //press(e.target);
-//     })
-// });
-
 
 function press(target) {
     
@@ -59,6 +51,12 @@ function press(target) {
             target.style.backgroundColor = "peru";
         }
 
+    if (val == "-" && displayVal == "0") {
+        console.log("we tryin to neg!");
+        operating = 0;
+        displayVal = "-" + displayVal;
+    }
+
     if (operating == 1 && newVal != "") display.textContent = newVal; //Display correct variable
     else display.textContent = displayVal;
 }
@@ -85,6 +83,9 @@ function addNum(val) {
         if (displayVal.length < 11) {
             if (displayVal == "0") {
                 displayVal = val;
+            }
+            else if (displayVal == "-0") {
+                displayVal = "-" + val;
             }
             else displayVal += val;
         }
