@@ -10,39 +10,14 @@ let resultVal = "";
 
 
  numPad.addEventListener("click", (e) => { 
-     press(e.target);
+     press(e.target.textContent);
  });
 
 
-addEventListener("keypress", logKey);
-
-function logKey(key) {
-    const val = key.key;
-    if (val == "0" ||
-        val == "1" ||
-        val == "2" ||
-        val == "3" ||
-        val == "4" ||
-        val == "5" ||
-        val == "6" ||
-        val == "7" ||
-        val == "8" ||
-        val == "9"
-    ) addNum(val);
-
-    else if (val == "=") execute();
-    else if (val == ".") decimal();
-
-    updateScreen(val);
+addEventListener("keypress", (e) => press(e.key));
 
 
- }
-
-
-function press(target) {
-    
-
-    const val = target.textContent;
+function press(val) {
     if (val == "AC") clear();
     else if (val == "0" ||
         val == "1" ||
@@ -59,20 +34,17 @@ function press(target) {
     else if (val == "x" ||
         val == "-" ||
         val == "+" ||
-        val == "÷"
+        val == "÷" ||
+        val == "/"
     )  operate(val);
 
-    else if (val == "=") execute();
+    else if (val == "=" || val == "Enter") execute();
     else if (val == ".") decimal();
     
     
     updateScreen(val);
     
-    if (val == "x" ||
-        val == "-" ||
-        val == "+" ||
-        val == "÷"
-    ) target.style.backgroundColor = "Peru";
+    currentOperation(val);
 
 }
 
@@ -82,10 +54,6 @@ function clear() {
     newVal = "";
     operator = "";
     operating = 0;
-    buttons[3].style.backgroundColor = "orange";
-    buttons[7].style.backgroundColor = "orange";
-    buttons[11].style.backgroundColor = "orange";
-    buttons[15].style.backgroundColor = "orange";
 }
 
 function addNum(val) {
@@ -126,7 +94,7 @@ function execute() {
     else if (operator == "x") {
         displayVal = String(Number(displayVal) * Number(newVal));
     }
-    else if (operator == "÷") {
+    else if (operator == "÷" || operator == "/") {
         if (newVal == "0") broken();
         else displayVal = String(Number(displayVal) / Number(newVal));
     }
@@ -193,10 +161,7 @@ function updateScreen(val) {
     val == "-" ||
     val == "+" ||
     val == "÷")) {
-        buttons[3].style.backgroundColor = "orange";
-        buttons[7].style.backgroundColor = "orange";
-        buttons[11].style.backgroundColor = "orange";
-        buttons[15].style.backgroundColor = "orange";
+        currentOperation(val);
         
     }
 
@@ -209,4 +174,24 @@ function updateScreen(val) {
     screenLimit();  
     if (operating == 1 && newVal != "") display.textContent = newVal; //Display correct variable
     else display.textContent = displayVal;
+}
+
+
+function currentOperation(val) {
+    buttons[3].style.backgroundColor = "orange";
+    buttons[7].style.backgroundColor = "orange";
+    buttons[11].style.backgroundColor = "orange";
+    buttons[15].style.backgroundColor = "orange";
+    if (val == "÷") {
+        buttons[3].style.backgroundColor = "peru";
+    }
+    else if (val == "x") {
+        buttons[7].style.backgroundColor = "peru";
+    }
+    else if (val == "-") {
+        buttons[11].style.backgroundColor = "peru";
+    }
+    else if (val == "+") {
+        buttons[15].style.backgroundColor = "peru";
+    }
 }
