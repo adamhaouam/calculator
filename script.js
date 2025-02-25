@@ -19,7 +19,7 @@ addEventListener("keypress", (e) => press(e.key));
 
 function press(val) {
     if (val == "AC") clear();
-    else if (val == "DEL" || val.toLowerCase() == "d") backSpace();
+    else if ((val == "DEL" || val.toLowerCase() == "d") && display.textContent != "0") backSpace();
     else if (val == "0" ||
         val == "1" ||
         val == "2" ||
@@ -42,6 +42,8 @@ function press(val) {
     else if (val == "=" || val == "Enter") execute();
     else if (val == ".") decimal();
     
+    
+
     
     updateScreen(val);
     
@@ -176,6 +178,8 @@ function updateScreen(val) {
     screenLimit();  
     if (operating == 1 && newVal != "") display.textContent = newVal; //Display correct variable
     else display.textContent = displayVal;
+
+    if (display.textContent == "-0") display.textContent = "-";
 }
 
 
@@ -201,14 +205,15 @@ function currentOperation(val) {
 
 
 function backSpace() {
-    console.log("deleted!");
     if (operating == 0) {
         if (displayVal != "0") {
             displayVal = displayVal.split("").slice(0, displayVal.length-1).join("");
+            if (displayVal == "") displayVal = "0";
         } 
     }
     else if (operating == 1) {
         newVal = newVal.split("").slice(0, newVal.length-1).join("");
+        if (newVal == "") newVal = "0";
     }
 }
 
