@@ -19,6 +19,7 @@ addEventListener("keypress", (e) => press(e.key));
 
 function press(val) {
     if (val == "AC") clear();
+    else if (val == "DEL" || val.toLowerCase() == "d") backSpace();
     else if (val == "0" ||
         val == "1" ||
         val == "2" ||
@@ -170,6 +171,8 @@ function updateScreen(val) {
     }
 
 
+    
+
     screenLimit();  
     if (operating == 1 && newVal != "") display.textContent = newVal; //Display correct variable
     else display.textContent = displayVal;
@@ -194,3 +197,19 @@ function currentOperation(val) {
         buttons[15].style.backgroundColor = "peru";
     }
 }
+
+
+
+function backSpace() {
+    console.log("deleted!");
+    if (operating == 0) {
+        if (displayVal != "0") {
+            displayVal = displayVal.split("").slice(0, displayVal.length-1).join("");
+        } 
+    }
+    else if (operating == 1) {
+        newVal = newVal.split("").slice(0, newVal.length-1).join("");
+    }
+}
+
+
